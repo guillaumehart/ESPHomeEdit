@@ -9,6 +9,7 @@ from esphome.const import (
     CONF_UPDATE_INTERVAL,
     CONF_MODE,
     CONF_FAN_MODE,
+    CONF_SWING_MODE
 )
 from esphome.core import CORE, coroutine
 
