@@ -78,7 +78,7 @@ void MitsubishiHeatPump::set_baud_rate(int baud) {
  * Returns:
  *   This class' supported climate::ClimateTraits.
  */
-climate::ClimateTraits MitsubishiHeatPump::traits() {
+climate::ClimateTraits& MitsubishiHeatPump::config_traits() {
     return traits_;
 }
 
@@ -229,7 +229,27 @@ void MitsubishiHeatPump::control(const climate::ClimateCall &call) {
                 hp->setVaneSetting("AUTO");
                 updated = true;
                 break;
-            case climate::CLIMATE_SWING_VERTICAL:
+            case climate::CLIMATE_SWING_1:
+                hp->setVaneSetting("1");
+                updated = true;
+                break;
+            case climate::CLIMATE_SWING_2:
+                hp->setVaneSetting("2");
+                updated = true;
+                break;
+            case climate::CLIMATE_SWING_3:
+                hp->setVaneSetting("3");
+                updated = true;
+                break;
+            case climate::CLIMATE_SWING_4:
+                hp->setVaneSetting("4");
+                updated = true;
+                break;
+            case climate::CLIMATE_SWING_5:
+                hp->setVaneSetting("5");
+                updated = true;
+                break;
+            case climat   e::CLIMATE_SWING_SWING:
                 hp->setVaneSetting("SWING");
                 updated = true;
                 break;
@@ -333,10 +353,19 @@ void MitsubishiHeatPump::hpSettingsChanged() {
     /* ******** HANDLE MITSUBISHI VANE CHANGES ********
      * const char* VANE_MAP[7]        = {"AUTO", "1", "2", "3", "4", "5", "SWING"};
      */
-    if (strcmp(currentSettings.vane, "SWING") == 0) {
-        this->swing_mode = climate::CLIMATE_SWING_VERTICAL;
-    }
-    else {
+    if (strcmp(currentSettings.vane, "AUTO") == 0) {
+        this->swing_mode = climate::CLIMATE_SWING_1;
+        } else if (strcmp(currentSettings.vane, "1") == 0) {
+            this->swing_mode = climate::CLIMATE_SWING_2;
+    } else if (strcmp(currentSettings.vane, "2") == 0) {
+            this->swing_mode = climate::CLIMATE_SWING_3;
+    } else if (strcmp(currentSettings.vane, "3") == 0) {
+            this->swing_mode = climate::CLIMATE_SWING_4;
+    } else if (strcmp(currentSettings.vane, "4") == 0) {
+            this->swing_mode = climate::CLIMATE_SWING_5;
+    } else if (strcmp(currentSettings.vane, "SWING") == 0) {
+            this->swing_mode = climate::CLIMATE_SWING_SWING;
+    } else { //case "AUTO" or default:
         this->swing_mode = climate::CLIMATE_SWING_OFF;
     }
     ESP_LOGI(TAG, "Swing mode is: %i", this->swing_mode);
