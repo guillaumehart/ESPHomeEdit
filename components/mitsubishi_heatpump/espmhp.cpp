@@ -78,8 +78,16 @@ void MitsubishiHeatPump::set_baud_rate(int baud) {
  * Returns:
  *   This class' supported climate::ClimateTraits.
  */
-climate::ClimateTraits& MitsubishiHeatPump::config_traits() {
-    return traits_;
+climate::ClimateTraits& MitsubishiHeatPump::traits() {
+    auto traits = climate::ClimateTraits();
+    traits.set_supports_swing_mode_off(true);
+    traits.set_supports_swing_mode_1(true);
+    traits.set_supports_swing_mode_2(true);
+    traits.set_supports_swing_mode_3(true);
+    traits.set_supports_swing_mode_4(true);
+    traits.set_supports_swing_mode_5(true);
+    traits.set_supports_swing_mode_SWING(true);
+    return traits;
 }
 
 /**
@@ -88,8 +96,17 @@ climate::ClimateTraits& MitsubishiHeatPump::config_traits() {
  * Returns:
  *   A reference to this class' supported climate::ClimateTraits.
  */
-climate::ClimateTraits& MitsubishiHeatPump::config_traits() {
-    return traits_;
+climate::ClimateTraits& MitsubishiHeatPump::traits() {
+    auto traits = climate::ClimateTraits();
+    traits.set_supports_swing_mode_off(true);
+    traits.set_supports_swing_mode_1(true);
+    traits.set_supports_swing_mode_2(true);
+    traits.set_supports_swing_mode_3(true);
+    traits.set_supports_swing_mode_4(true);
+    traits.set_supports_swing_mode_5(true);
+    traits.set_supports_swing_mode_SWING(true);
+    return traits;
+}
 }
 
 /**
