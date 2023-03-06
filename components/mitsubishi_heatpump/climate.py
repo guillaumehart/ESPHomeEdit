@@ -9,7 +9,6 @@ from esphome.const import (
     CONF_UPDATE_INTERVAL,
     CONF_MODE,
     CONF_FAN_MODE,
-    CONF_SWING_MODE,
 )
 from esphome.core import CORE, coroutine
 
@@ -18,7 +17,6 @@ AUTO_LOAD = ["climate"]
 CONF_SUPPORTS = "supports"
 DEFAULT_CLIMATE_MODES = ["HEAT_COOL", "COOL", "HEAT", "DRY", "FAN_ONLY"]
 DEFAULT_FAN_MODES = ["AUTO", "DIFFUSE", "LOW", "MEDIUM", "MIDDLE", "HIGH"]
-DEFAULT_SWING_MODES = ["OFF", "VERTICAL"]
 
 MitsubishiHeatPump = cg.global_ns.class_(
     "MitsubishiHeatPump", climate.Climate, cg.PollingComponent
